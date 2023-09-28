@@ -1,27 +1,27 @@
-﻿using NUnit.Framework;
-
-namespace Numani.ShapeUnit;
+﻿namespace Numani.ShapeUnit;
 
 public class SequenceAssertionContext<T> : IDisposable
 {
     private int _index = 0;
 
     public required T[] Context { get; init; }
+    public required IAssert Assert { get; init; }
 
     public AssertionContext<T> Next()
     {
-        Assert.That(_index + 1, Is.LessThanOrEqualTo(Context.Length));
+        Assert.IsLessThanOrEquals(Context.Length, _index + 1);
 
         var result = Context[_index];
         _index++;
         return new AssertionContext<T>
         {
-            Actual = result
+            Actual = result,
+            Assert = Assert
         };
     }
 
     public void Dispose()
     {
-        Assert.That(_index, Is.EqualTo(Context.Length));
+        Assert.AreEqual(Context.Length, _index);
     }
 }

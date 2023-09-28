@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "VersionIncrement": {
-      "commandName": "Project",
-      "commandLineArgs": "--BumpPosition Minor"
-    }
-  }
-}

@@ -1,6 +1,4 @@
-﻿using NUnit.Framework;
-
-namespace Numani.ShapeUnit;
+﻿namespace Numani.ShapeUnit;
 
 public static class AssertionHelper
 {
@@ -9,12 +7,16 @@ public static class AssertionHelper
     /// </summary>
     /// <typeparam name="TActual">検証すべき値の型。</typeparam>
     /// <param name="obj">検証すべき値。</param>
+    /// <param name="assert">Assertに用いる実装。</param>
     /// <returns>検証コンテキスト。</returns>
-    public static AssertionContext<TActual?> BeginAssertion<TActual>(this TActual? obj)
+    public static AssertionContext<TActual?> BeginAssertion<TActual>(
+        this TActual? obj,
+        IAssert assert)
     {
         return new AssertionContext<TActual?>()
         {
-            Actual = obj
+            Actual = obj,
+            Assert = assert
         };
     }
 
@@ -28,16 +30,18 @@ public static class AssertionHelper
     public static AssertionContext<TActual> NotNull<TActual>(
         this AssertionContext<TActual?> context)
     {
-        Assert.That(context.Actual, Is.Not.Null);
+        context.Assert.IsNotNull(context.Actual);
+
         if (context.Actual is null) throw new Exception("Assertion succeeded but pattern match failed.");
         return new AssertionContext<TActual>()
         {
-            Actual = context.Actual
+            Actual = context.Actual,
+            Assert = context.Assert
         };
     }
 
     public static void Null<TActual>(this AssertionContext<TActual?> context)
     {
-        Assert.That(context.Actual, Is.Null);
+        context.Assert.IsNull(context.Actual);
     }
 }

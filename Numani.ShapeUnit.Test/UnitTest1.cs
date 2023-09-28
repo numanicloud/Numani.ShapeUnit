@@ -1,7 +1,11 @@
+using System.Numerics;
+
 namespace Numani.ShapeUnit.Test;
 
 public class Tests
 {
+    private readonly IAssert _assertion = new Assertion();
+
     [Test]
     public void 値がnullのときにレッドを出せる()
     {
@@ -9,7 +13,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            hoge.BeginAssertion()
+            hoge.BeginAssertion(_assertion)
                 .NotNull();
         });
     }
@@ -25,7 +29,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            hoge.BeginAssertion()
+            hoge.BeginAssertion(_assertion)
                 .Null();
         });
     }
@@ -39,7 +43,7 @@ public class Tests
             Second = 12,
         };
 
-        actual.BeginAssertion()
+        actual.BeginAssertion(_assertion)
             .NotNull()
             .Type<MyHoge>()
             .AreEqual(11, x => x.First);
@@ -56,7 +60,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            actual.BeginAssertion()
+            actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyHoge>()
                 .AreEqual(13, x => x.First);
@@ -74,7 +78,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            actual.BeginAssertion()
+            actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyHoge>()
                 .Declare(out var obj);
@@ -92,7 +96,7 @@ public class Tests
             Second = 12,
         };
 
-        actual.BeginAssertion()
+        actual.BeginAssertion(_assertion)
             .NotNull()
             .Type<MyHoge>()
             .Declare(out var obj);
@@ -110,7 +114,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            actual.BeginAssertion()
+            actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyFuga>()
                 .Empty(x => x.Ints);
@@ -125,7 +129,7 @@ public class Tests
             Ints = Array.Empty<int>(),
         };
 
-        actual.BeginAssertion()
+        actual.BeginAssertion(_assertion)
             .NotNull()
             .Type<MyFuga>()
             .Empty(x => x.Ints);
@@ -141,7 +145,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            using var sequence = actual.BeginAssertion()
+            using var sequence = actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyFuga>()
                 .Sequence(x => x.Ints);
@@ -159,7 +163,7 @@ public class Tests
             Ints = new[] { 1, 2 }
         };
 
-        using var sequence = actual.BeginAssertion()
+        using var sequence = actual.BeginAssertion(_assertion)
             .NotNull()
             .Type<MyFuga>()
             .Sequence(x => x.Ints);
@@ -178,7 +182,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            using var sequence = actual.BeginAssertion()
+            using var sequence = actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyFuga>()
                 .Sequence(x => x.Ints);
@@ -193,7 +197,7 @@ public class Tests
             Ints = Array.Empty<int>()
         };
 
-        using var sequence = actual.BeginAssertion()
+        using var sequence = actual.BeginAssertion(_assertion)
             .NotNull()
             .Type<MyFuga>()
             .Sequence(x => x.Ints);
@@ -210,7 +214,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            actual.BeginAssertion()
+            actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyHoge>()
                 .Select(x => x.First)
@@ -229,7 +233,7 @@ public class Tests
 
         Assert.Throws<AssertionException>(() =>
         {
-            actual.BeginAssertion()
+            actual.BeginAssertion(_assertion)
                 .NotNull()
                 .Type<MyFuga>();
         });
@@ -244,5 +248,34 @@ public class Tests
     private sealed class MyFuga
     {
         public int[] Ints { get; set; }
+    }
+
+    private sealed class Assertion : IAssert
+    {
+        public void AreEqual<T>(T expected, T actual)
+        {
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        public void IsType<T>(object actual)
+        {
+            Assert.That(actual, Is.TypeOf<T>());
+        }
+
+        public void IsNotNull<T>(T actual)
+        {
+            Assert.That(actual, Is.Not.Null);
+        }
+
+        public void IsNull<T>(T actual)
+        {
+            Assert.That(actual, Is.Null);
+        }
+
+        public void IsLessThanOrEquals<T>(T expected, T actual)
+            where T : INumber<T>
+        {
+            Assert.That(actual, Is.LessThanOrEqualTo(expected));
+        }
     }
 }

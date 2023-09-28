@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using NUnit.Framework;
-
-namespace Numani.ShapeUnit;
+﻿namespace Numani.ShapeUnit;
 
 /// <summary>
 /// 単体テストのために、ある1つの値について検証する責任を持つクラス。
@@ -14,6 +11,8 @@ public sealed class AssertionContext<TActual>
     /// </summary>
     public required TActual Actual { get; init; }
 
+    public required IAssert Assert { get; init; }
+
     /// <summary>
     /// この値が指定した型であることを検査し、成功したらその型を持つコンテキストとして返します。
     /// </summary>
@@ -22,11 +21,12 @@ public sealed class AssertionContext<TActual>
     /// <exception cref="Exception"></exception>
     public AssertionContext<T> Type<T>() where T : TActual
     {
-        Assert.That(Actual, Is.TypeOf<T>());
+        Assert.IsType<T>(Actual!);
         if (Actual is not T cast) throw new Exception("Assertion succeeded but casting failed.");
         return new AssertionContext<T>
         {
-            Actual = cast
+            Actual = cast,
+            Assert = Assert
         };
     }
 
@@ -37,7 +37,7 @@ public sealed class AssertionContext<TActual>
     /// <returns>Fluent Interface用のコンテキスト オブジェクト。</returns>
     public AssertionContext<TActual> EqualsTo(TActual expected)
     {
-        Assert.That(Actual, Is.EqualTo(expected));
+        Assert.AreEqual(expected, Actual);
         return this;
     }
 
@@ -52,7 +52,7 @@ public sealed class AssertionContext<TActual>
         TExpected expected,
         Func<TActual, TExpected> selector)
     {
-        Assert.That(selector(Actual), Is.EqualTo(expected));
+        Assert.AreEqual(expected, selector(Actual));
         return this;
     }
 
@@ -66,7 +66,8 @@ public sealed class AssertionContext<TActual>
     {
         return new AssertionContext<T>()
         {
-            Actual = selector(Actual)
+            Actual = selector(Actual),
+            Assert = Assert
         };
     }
 
@@ -80,7 +81,8 @@ public sealed class AssertionContext<TActual>
     {
         return new SequenceAssertionContext<TItem>()
         {
-            Context = selector(Actual)
+            Context = selector(Actual),
+            Assert = Assert
         };
     }
 

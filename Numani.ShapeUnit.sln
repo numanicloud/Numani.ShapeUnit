@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Numani.ShapeUnit", "Numani.ShapeUnit\Numani.ShapeUnit.csproj", "{C713E6AE-ACE7-48D5-9761-DEB8D40E3559}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Numani.ShapeUnit.Test", "Numani.ShapeUnit.Test\Numani.ShapeUnit.Test.csproj", "{207B4EAD-D3D0-435B-916D-972494131683}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C713E6AE-ACE7-48D5-9761-DEB8D40E3559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C713E6AE-ACE7-48D5-9761-DEB8D40E3559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C713E6AE-ACE7-48D5-9761-DEB8D40E3559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C713E6AE-ACE7-48D5-9761-DEB8D40E3559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{207B4EAD-D3D0-435B-916D-972494131683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207B4EAD-D3D0-435B-916D-972494131683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207B4EAD-D3D0-435B-916D-972494131683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207B4EAD-D3D0-435B-916D-972494131683}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F77CD8F4-C7B4-430E-B2D0-A3F5D6624490}
+	EndGlobalSection
+EndGlobal

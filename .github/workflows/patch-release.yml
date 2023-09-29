@@ -1,0 +1,42 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: patch-release
+
+on: workflow_dispatch
+
+jobs:
+  body:
+    runs-on: ubuntu-latest
+    steps:
+    # Install environment
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    # Build check
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+    # Determine version
+    - name: Bump version
+      run: |
+        VERSION=$(version/SemVerBumper.exe -v version/version.json -b patch)
+        echo "version=${VERSION}" >> "$GITHUB_ENV"
+    - name: git add
+      run: git add "version/version.json"
+    - name: git commit
+      run: git commit -m "CI Release v${version}"
+    - name: put tag
+      run: git tag ${version}
+    - name: push
+      run: git push origin main
+    # Make NuGet package
+    - name: NuGet pack
+      run: dotnet pack Numani.ShapeUnit/Numani.ShapeUnit.csproj -o publish/ -p:PublishProfile=FolderProfile -p:Version=${version}
+    - name: NuGet push
+      run: dotnet push publish/Numani.ShapeUnit.${version}.nupkg -k ${NuGetApiKey} -s https://api.nuget.org/v3/index.json

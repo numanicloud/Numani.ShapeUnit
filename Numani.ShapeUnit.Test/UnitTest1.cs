@@ -7,7 +7,7 @@ public class Tests
     private readonly IAssert _assertion = new Assertion();
 
     [Test]
-    public void ’l‚ªnull‚Ì‚Æ‚«‚ÉƒŒƒbƒh‚ğo‚¹‚é()
+    public void å€¤ãŒnullã®ã¨ãã«ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         MyHoge? hoge = null;
 
@@ -19,7 +19,7 @@ public class Tests
     }
 
     [Test]
-    public void ’l‚ªnull‚Å‚È‚¢‚Æ‚«‚ÉƒŒƒbƒh‚ğo‚¹‚é()
+    public void å€¤ãŒnullã§ãªã„ã¨ãã«ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         MyHoge? hoge = new MyHoge()
         {
@@ -35,7 +35,7 @@ public class Tests
     }
 
     [Test]
-    public void FirstƒvƒƒpƒeƒB‚Ì’l‚Ü‚Å“¯‚¶‚Æ‚«‚ÉƒOƒŠ[ƒ“‚ğo‚·()
+    public void Firstãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ã¾ã§åŒã˜ã¨ãã«ã‚°ãƒªãƒ¼ãƒ³ã‚’å‡ºã™()
     {
         object actual = new MyHoge()
         {
@@ -50,7 +50,7 @@ public class Tests
     }
 
     [Test]
-    public void FirstƒvƒƒpƒeƒB‚Ì’l‚ªˆá‚¤‚Æ‚«‚ÉƒŒƒbƒh‚ğo‚¹‚é()
+    public void Firstãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å€¤ãŒé•ã†ã¨ãã«ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyHoge()
         {
@@ -68,7 +68,7 @@ public class Tests
     }
 
     [Test]
-    public void ƒRƒ“ƒeƒLƒXƒg‚ğ’Šo‚µ‚ÄFirst‚ğŒŸ¸‚µƒŒƒbƒh‚ğo‚¹‚é()
+    public void ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’æŠ½å‡ºã—ã¦Firstã‚’æ¤œæŸ»ã—ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyHoge()
         {
@@ -88,7 +88,7 @@ public class Tests
     }
 
     [Test]
-    public void ƒRƒ“ƒeƒLƒXƒg‚ğ’Šo‚µ‚ÄFirst‚ğŒŸ¸‚µƒOƒŠ[ƒ“‚ğo‚¹‚é()
+    public void ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’æŠ½å‡ºã—ã¦Firstã‚’æ¤œæŸ»ã—ã‚°ãƒªãƒ¼ãƒ³ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyHoge()
         {
@@ -105,7 +105,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚ª‹ó‚Å‚ ‚é‚±‚Æ‚ğŒŸØ‚µ‚ÄƒŒƒbƒh‚ªo‚¹‚é()
+    public void é…åˆ—ãŒç©ºã§ã‚ã‚‹ã“ã¨ã‚’æ¤œè¨¼ã—ã¦ãƒ¬ãƒƒãƒ‰ãŒå‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -122,7 +122,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚ª‹ó‚Å‚ ‚é‚±‚Æ‚ğŒŸØ‚µ‚ÄƒOƒŠ[ƒ“‚ğo‚¹‚é()
+    public void é…åˆ—ãŒç©ºã§ã‚ã‚‹ã“ã¨ã‚’æ¤œè¨¼ã—ã¦ã‚°ãƒªãƒ¼ãƒ³ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -136,7 +136,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚Ì’l‚ª‡˜ŠÜ‚ßˆê’v‚µ‚Ä‚¢‚é‚±‚Æ‚ğŒŸØ‚µ‚ÄƒŒƒbƒh‚ğo‚¹‚é()
+    public void é…åˆ—ã®å€¤ãŒé †åºå«ã‚ä¸€è‡´ã—ã¦ã„ã‚‹ã“ã¨ã‚’æ¤œè¨¼ã—ã¦ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -156,7 +156,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚Ì’l‚ª‡˜ŠÜ‚ßˆê’v‚µ‚Ä‚¢‚é‚±‚Æ‚ğŒŸØ‚µ‚ÄƒOƒŠ[ƒ“‚ğo‚¹‚é()
+    public void é…åˆ—ã®å€¤ãŒé †åºå«ã‚ä¸€è‡´ã—ã¦ã„ã‚‹ã“ã¨ã‚’æ¤œè¨¼ã—ã¦ã‚°ãƒªãƒ¼ãƒ³ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -173,7 +173,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚Ì’l‚ª‹ó‚Å‚ ‚é‚±‚Æ‚ğSequence‚ğ—p‚¢‚ÄŒŸØ‚µƒŒƒbƒh‚ğo‚¹‚é()
+    public void é…åˆ—ã®å€¤ãŒç©ºã§ã‚ã‚‹ã“ã¨ã‚’Sequenceã‚’ç”¨ã„ã¦æ¤œè¨¼ã—ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -190,7 +190,7 @@ public class Tests
     }
 
     [Test]
-    public void ”z—ñ‚ª‹ó‚Å‚ ‚é‚±‚Æ‚ğSequence‚ğ—p‚¢‚ÄŒŸØ‚µƒOƒŠ[ƒ“‚ğo‚¹‚é()
+    public void é…åˆ—ãŒç©ºã§ã‚ã‚‹ã“ã¨ã‚’Sequenceã‚’ç”¨ã„ã¦æ¤œè¨¼ã—ã‚°ãƒªãƒ¼ãƒ³ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyFuga()
         {
@@ -204,7 +204,7 @@ public class Tests
     }
 
     [Test]
-    public void ’l‚ğSelect‚ÅË‰e‚µ‚Ä‚©‚ç“™‚µ‚³‚ğŒŸØ‚µƒŒƒbƒh‚ğo‚¹‚é()
+    public void å€¤ã‚’Selectã§å°„å½±ã—ã¦ã‹ã‚‰ç­‰ã—ã•ã‚’æ¤œè¨¼ã—ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyHoge()
         {
@@ -223,7 +223,7 @@ public class Tests
     }
 
     [Test]
-    public void Œ^ƒ`ƒFƒbƒN‚ğ‚µ‚ÄƒŒƒbƒh‚ğo‚¹‚é()
+    public void å‹ãƒã‚§ãƒƒã‚¯ã‚’ã—ã¦ãƒ¬ãƒƒãƒ‰ã‚’å‡ºã›ã‚‹()
     {
         object actual = new MyHoge()
         {

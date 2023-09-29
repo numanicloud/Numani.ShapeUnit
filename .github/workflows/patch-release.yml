@@ -25,7 +25,7 @@ jobs:
     # Determine version
     - name: Bump version
       run: |
-        VERSION=$(version/SemVerBumper.exe -v version/version.json -b patch)
+        VERSION=$(version/SemVerBumper -v version/version.json -b patch)
         echo "version=${VERSION}" >> "$GITHUB_ENV"
     - name: git add
       run: git add "version/version.json"

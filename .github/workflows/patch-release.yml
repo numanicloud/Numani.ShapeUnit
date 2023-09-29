@@ -25,6 +25,8 @@ jobs:
     # Determine version
     - name: ls
       run: ls version -la
+    - name: chmod
+      run: chmod version/SemVerBumper 744
     - name: Bump version
       run: |
         VERSION=$(version/SemVerBumper -v version/version.json -b patch)

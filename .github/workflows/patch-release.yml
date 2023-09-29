@@ -23,6 +23,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     # Determine version
+    - name: ls
+      run: ls version -la
     - name: Bump version
       run: |
         VERSION=$(version/SemVerBumper -v version/version.json -b patch)

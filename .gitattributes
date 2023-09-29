@@ -1,1 +1,2 @@
 version/SemVerBumper.exe filter=lfs diff=lfs merge=lfs -text
+version/SemVerBumper filter=lfs diff=lfs merge=lfs -text

@@ -23,10 +23,10 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     # Determine version
+    - name: chmod
+      run: chmod 744 version/SemVerBumper
     - name: ls
       run: ls version -la
-    - name: chmod
-      run: chmod version/SemVerBumper 744
     - name: Bump version
       run: |
         VERSION=$(version/SemVerBumper -v version/version.json -b patch)

@@ -3,4 +3,3 @@ obj/
 bin/
 *.user
 publish/
-version/SemVerBumper.exe
